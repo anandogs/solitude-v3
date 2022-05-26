@@ -3,7 +3,7 @@ import { createClient } from 'contentful'
 import { GetStaticProps  } from 'next'
 import { InferGetStaticPropsType } from 'next'
 import { Key } from 'react'
-import Card from '../components/Card'
+import CardImageText from '../components/CardImageText'
 
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -29,14 +29,15 @@ export const getStaticProps: GetStaticProps = async () => {
 
   // 24-05-2022:2 infer get static props
 const Home: NextPage = ( { cards } : InferGetStaticPropsType<typeof getStaticProps>) => {
-  
   return (
-<div>
-  {cards.map((card: { sys: { id: Key }, fields:{title:String} }) => 
+<div className='grid grid-cols-12 gap-desktop m-desktop justify-items-center '>
+  {cards.map((card: { 
+    sys: {id: Key}
+    fields: { title: String; body: String; cardImage: { fields: { description: String; file: { url: String } } } } }) => 
     
-      
-      <Card key={card.sys.id} cardDict={card} />
-        
+      <div className='col-span-6'>
+      <CardImageText key={card.sys.id} cardDict={card} />
+      </div>
       
     )}
 </div>
