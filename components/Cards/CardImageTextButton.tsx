@@ -30,7 +30,7 @@ const CardImageTextButton: FunctionComponent<CardImageTextButtonProps> = ({
   }
   return (
     <div className="h-card bg-tertiary-brand flex">
-      <div className={cardNumber % 2 == 0 ? 'basis-1/2 order-2' : 'basis-1/2'}>
+      <div className={cardNumber % 2 == 0 ? 'basis-1/2 order-2 w-1/2' : 'basis-1/2 w-1/2'}>
       <Image
         alt={cardDict.fields.image.fields.description}
         src={`https:${cardDict.fields.image.fields.file.url}`}
