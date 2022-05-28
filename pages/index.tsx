@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import { createClient } from 'contentful'
 import { GetStaticProps  } from 'next'
 import { InferGetStaticPropsType } from 'next'
@@ -13,17 +14,18 @@ export const getStaticProps: GetStaticProps = async () => {
   const client = createClient({
     space: process.env.CONTENTFUL_SPACE!,
     accessToken: process.env.CONTENTFUL_KEY!,
+  
   })
 
+  const homePage = await client.getEntries({ content_type: 'homePage'})
+  // console.log(homePage.items[0].fields.textImageCards)
 
-
-  const cardImageTextResponse = await client.getEntries({ content_type: 'card', order: 'fields.order',})
-  const cardImageTextButtonResponse = await client.getEntries({ content_type: 'cardImageTextButton', order:'fields.order'})
+  const cardImageTextResponse = await client.getEntries({ content_type: 'card'})
+  const cardImageTextButtonResponse = await client.getEntries({ content_type: 'cardImageTextButton'})
   
+
   const cardsImageText = cardImageTextResponse.items
   const cardsImageTextButton = cardImageTextButtonResponse.items
-
-  console.log(cardsImageTextButton)
 
   return {
     props: {

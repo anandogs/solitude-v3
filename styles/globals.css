@@ -1,8 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  /* Theme Colors */
+  --primary-brand: #98c93c;
+  --primary-brand-hover: #82ac34;
+  --secondary-brand: #10110d;
+  --secondary-brand-hover: #030303;
+  --tertiary-brand: #f6f6f6;
+  --tertiary-brand-hover: #e0e0e0;
+  --dark-grey: #eaeaea;
+  --font-primary: "Montserrat", sans-serif;
+  --font-secondary: "Open Sans", sans-serif;
+}
 
 html,
 body {
@@ -19,4 +32,105 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+h1 {
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 5.4375rem;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 3.375rem;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2.0625rem;
+  letter-spacing: -0.02em;
+}
+
+p {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 140%;
+}
+
+h4 {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 140%;
+}
+
+h5 {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 0.9375rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+a {
+  font-family: var(--font-secondary);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.375rem;
+  text-decoration-line: underline;
+  color: var(--primary-brand);
+}
+
+button {
+  height: 3.75rem;
+  background-color: var(--primary-brand);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.625rem;
+  gap: 0.625rem;
+  width: 9rem;
+  font-family: var(--font-secondary);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 19px;
+  /* identical to box height */
+  color: var(--tertiary-brand);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 0.9375rem;
+}
+
+button:hover {
+  background: var(--primary-brand-hover)
+}
+
+.button-secondary {
+  background-color: var(--secondary-brand);
+}
+
+.button-secondary:hover {
+  background-color: var(--secondary-brand-hover);
+}
+
+.button-secondary {
+  background-color: var(--tertiary-brand);
+  color: var(--primary-brand)
+}
+
+.button-secondary:hover {
+  background-color: var(--tertiary-brand-hover);
 }
