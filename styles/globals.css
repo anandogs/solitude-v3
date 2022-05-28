@@ -40,6 +40,7 @@ h1 {
   font-size: 4rem;
   line-height: 5.4375rem;
   letter-spacing: -0.02em;
+  color: var(--secondary-brand);
 }
 
 h2 {
@@ -48,6 +49,7 @@ h2 {
   font-size: 2.5rem;
   line-height: 3.375rem;
   letter-spacing: -0.02em;
+  color: var(--secondary-brand);
 }
 
 h3 {
@@ -56,6 +58,7 @@ h3 {
   font-size: 1.5rem;
   line-height: 2.0625rem;
   letter-spacing: -0.02em;
+  color: var(--secondary-brand);
 }
 
 p {
@@ -63,6 +66,7 @@ p {
   font-weight: 500;
   font-size: 1rem;
   line-height: 140%;
+  color: var(--secondary-brand);
 }
 
 h4 {
@@ -70,6 +74,7 @@ h4 {
   font-weight: 500;
   font-size: 0.875rem;
   line-height: 140%;
+  color: var(--secondary-brand);
 }
 
 h5 {
@@ -80,6 +85,7 @@ h5 {
   line-height: 0.9375rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  color: var(--secondary-brand);
 }
 
 a {

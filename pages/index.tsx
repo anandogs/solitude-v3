@@ -10,22 +10,24 @@ import CardImageTextButton from '../components/Cards/CardImageTextButton'
 
 export const getStaticProps: GetStaticProps = async () => {
 
-  
+  interface homePage {
+    title:string,
+    textImageCards : [],
+    textImageButtonCards : [],
+
+  }
+
   const client = createClient({
     space: process.env.CONTENTFUL_SPACE!,
     accessToken: process.env.CONTENTFUL_KEY!,
   
   })
 
-  const homePage = await client.getEntries({ content_type: 'homePage'})
-  // console.log(homePage.items[0].fields.textImageCards)
+  const homePageRes = await client.getEntry<homePage>('3ZijWO9ECH1F3T6GLU8LbI')
 
-  const cardImageTextResponse = await client.getEntries({ content_type: 'card'})
-  const cardImageTextButtonResponse = await client.getEntries({ content_type: 'cardImageTextButton'})
-  
 
-  const cardsImageText = cardImageTextResponse.items
-  const cardsImageTextButton = cardImageTextButtonResponse.items
+  const cardsImageText = homePageRes.fields.textImageCards
+  const cardsImageTextButton = homePageRes.fields.textImageButtonCards
 
   return {
     props: {
@@ -40,7 +42,7 @@ export const getStaticProps: GetStaticProps = async () => {
 const Home: NextPage = ( { cardsImageText, cardsImageTextButton } : InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div>
-<div className='grid grid-cols-12 gap-x-desktop m-desktop justify-items-center '>
+<div className='grid grid-cols-12 gap-x-desktop m-desktop justify-items-center'>
   {cardsImageText.map((card: { 
     sys: {id: Key}
     fields: { title: string; body: string; cardImage: { fields: { description: string; file: { url: string } } } } }) => 
