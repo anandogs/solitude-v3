@@ -1,73 +1,97 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import { createClient } from 'contentful'
-import { GetStaticProps  } from 'next'
-import { InferGetStaticPropsType } from 'next'
-import { Key } from 'react'
-import CardImageText from '../components/Cards/CardImageText'
-import CardImageTextButton from '../components/Cards/CardImageTextButton'
-
+import type { NextPage } from "next";
+import { createClient } from "contentful";
+import { GetStaticProps } from "next";
+import { InferGetStaticPropsType } from "next";
+import { Key } from "react";
+import CardImageText from "../components/Cards/CardImageText";
+import CardImageTextButton from "../components/Cards/CardImageTextButton";
 
 export const getStaticProps: GetStaticProps = async () => {
-
   interface homePage {
-    title:string,
-    textImageCards : [],
-    textImageButtonCards : [],
-
+    title: string;
+    textImageCards: [];
+    textImageButtonCards: [];
+    youtubeHeroVideo: {};
   }
 
   const client = createClient({
     space: process.env.CONTENTFUL_SPACE!,
     accessToken: process.env.CONTENTFUL_KEY!,
-  
-  })
+  });
 
-  const homePageRes = await client.getEntry<homePage>('3ZijWO9ECH1F3T6GLU8LbI')
+  const homePageRes = await client.getEntry<homePage>("3ZijWO9ECH1F3T6GLU8LbI");
 
+  console.log(homePageRes.fields);
 
-  const cardsImageText = homePageRes.fields.textImageCards
-  const cardsImageTextButton = homePageRes.fields.textImageButtonCards
+  const cardsImageText = homePageRes.fields.textImageCards;
+  const cardsImageTextButton = homePageRes.fields.textImageButtonCards;
+  const youtubeHeroVideo = homePageRes.fields.youtubeHeroVideo;
 
   return {
     props: {
       cardsImageText,
-      cardsImageTextButton
-    }
-  }
+      cardsImageTextButton,
+      youtubeHeroVideo,
+    },
+  };
+};
 
-  }
 
-  // 24-05-2022:2 infer get static props
-const Home: NextPage = ( { cardsImageText, cardsImageTextButton } : InferGetStaticPropsType<typeof getStaticProps>) => {
+
+// 24-05-2022:2 infer get static props
+const Home: NextPage = ({
+  cardsImageText,
+  cardsImageTextButton,
+  youtubeHeroVideo,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  
+
   return (
     <div>
-<div className='grid grid-cols-12 gap-x-desktop m-desktop justify-items-center'>
-  {cardsImageText.map((card: { 
-    sys: {id: Key}
-    fields: { title: string; body: string; cardImage: { fields: { description: string; file: { url: string } } } } }) => 
-    
-      <div className='col-span-6' key={card.sys.id} >
-      <CardImageText cardDict={card} />
+      <iframe className="w-screen" height="720" src={youtubeHeroVideo.fields.youtubeLink} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+      <div className="grid grid-cols-12 gap-x-desktop m-desktop justify-items-center">
+        {cardsImageText.map(
+          (card: {
+            sys: { id: Key };
+            fields: {
+              title: string;
+              body: string;
+              cardImage: {
+                fields: { description: string; file: { url: string } };
+              };
+            };
+          }) => (
+            <div className="col-span-6" key={card.sys.id}>
+              <CardImageText cardDict={card} />
+            </div>
+          )
+        )}
       </div>
-      
-    )}
-</div>
-<div className='grid justify-items-center'>
-  {cardsImageTextButton.map((card: { 
-    sys: {id: Key}
-    fields: { title: string; body: string; subheading: string; button: string; image: { fields: { description: string; file: { url: string } } } } },  index:number) => 
-    
-      <div key={card.sys.id} >
-      <CardImageTextButton cardDict={card} cardNumber={index} />
+      <div className="grid justify-items-center">
+        {cardsImageTextButton.map(
+          (
+            card: {
+              sys: { id: Key };
+              fields: {
+                title: string;
+                body: string;
+                subheading: string;
+                button: string;
+                image: {
+                  fields: { description: string; file: { url: string } };
+                };
+              };
+            },
+            index: number
+          ) => (
+            <div key={card.sys.id}>
+              <CardImageTextButton cardDict={card} cardNumber={index} />
+            </div>
+          )
+        )}
       </div>
-      
-    )}
-</div>
+    </div>
+  );
+};
 
-</div>
-
-  )
-}
-
-export default Home
+export default Home;
