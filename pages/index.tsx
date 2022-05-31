@@ -5,6 +5,8 @@ import { InferGetStaticPropsType } from "next";
 import { Key } from "react";
 import CardImageText from "../components/Cards/CardImageText";
 import CardImageTextButton from "../components/Cards/CardImageTextButton";
+import HeroImageText from "../components/Cards/HeroImageText";
+import Header from "../components/Common/Header";
 
 export const getStaticProps: GetStaticProps = async () => {
   interface homePage {
@@ -21,21 +23,22 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const homePageRes = await client.getEntry<homePage>("3ZijWO9ECH1F3T6GLU8LbI");
 
-  console.log(homePageRes.fields);
+  console.log(homePageRes.fields.heroImage);
 
   const cardsImageText = homePageRes.fields.textImageCards;
   const cardsImageTextButton = homePageRes.fields.textImageButtonCards;
   const youtubeHeroVideo = homePageRes.fields.youtubeHeroVideo;
+  const heroImage = homePageRes.fields.heroImage;
 
   return {
     props: {
       cardsImageText,
       cardsImageTextButton,
       youtubeHeroVideo,
+      heroImage,
     },
   };
 };
-
 
 
 // 24-05-2022:2 infer get static props
@@ -43,12 +46,15 @@ const Home: NextPage = ({
   cardsImageText,
   cardsImageTextButton,
   youtubeHeroVideo,
+  heroImage,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   
 
   return (
     <div>
+      <Header/>
       <iframe className="w-screen" height="720" src={youtubeHeroVideo.fields.youtubeLink} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+      <HeroImageText heroDict={heroImage}/>
       <div className="grid grid-cols-12 gap-x-desktop m-desktop justify-items-center">
         {cardsImageText.map(
           (card: {
