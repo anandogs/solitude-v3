@@ -14,6 +14,7 @@ export const getStaticProps: GetStaticProps = async () => {
     textImageCards: [];
     textImageButtonCards: [];
     youtubeHeroVideo: {};
+    heroImage: {};
   }
 
   const client = createClient({
@@ -22,8 +23,6 @@ export const getStaticProps: GetStaticProps = async () => {
   });
 
   const homePageRes = await client.getEntry<homePage>("3ZijWO9ECH1F3T6GLU8LbI");
-
-  console.log(homePageRes.fields.heroImage);
 
   const cardsImageText = homePageRes.fields.textImageCards;
   const cardsImageTextButton = homePageRes.fields.textImageButtonCards;
