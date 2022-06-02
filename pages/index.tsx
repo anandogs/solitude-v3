@@ -6,6 +6,7 @@ import { Key } from "react";
 import CardImageText from "../components/Cards/CardImageText";
 import CardImageTextButton from "../components/Cards/CardImageTextButton";
 import HeroImageText from "../components/Cards/HeroImageText";
+import TextField from "../components/Cards/TextField";
 import Header from "../components/Common/Header";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -15,6 +16,7 @@ export const getStaticProps: GetStaticProps = async () => {
     textImageButtonCards: [];
     youtubeHeroVideo: {};
     heroImage: {};
+    textField: {};	
   }
 
   const client = createClient({
@@ -28,6 +30,8 @@ export const getStaticProps: GetStaticProps = async () => {
   const cardsImageTextButton = homePageRes.fields.textImageButtonCards;
   const youtubeHeroVideo = homePageRes.fields.youtubeHeroVideo;
   const heroImage = homePageRes.fields.heroImage;
+  const textField = homePageRes.fields.textField;
+
 
   return {
     props: {
@@ -35,6 +39,7 @@ export const getStaticProps: GetStaticProps = async () => {
       cardsImageTextButton,
       youtubeHeroVideo,
       heroImage,
+      textField, 
     },
   };
 };
@@ -46,6 +51,7 @@ const Home: NextPage = ({
   cardsImageTextButton,
   youtubeHeroVideo,
   heroImage,
+  textField,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   
 
@@ -54,6 +60,7 @@ const Home: NextPage = ({
       <Header/>
       <iframe className="w-screen" height="720" src={youtubeHeroVideo.fields.youtubeLink} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
       <HeroImageText heroDict={heroImage}/>
+      <TextField textFieldDict={textField}/>
       <div className="grid grid-cols-12 gap-x-desktop m-desktop justify-items-center">
         {cardsImageText.map(
           (card: {
