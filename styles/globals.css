@@ -54,7 +54,7 @@ h2 {
 
 h3 {
   font-family: var(--font-secondary);
-  font-weight: 700;
+  font-weight: 400;
   font-size: 1.5rem;
   line-height: 2.0625rem;
   letter-spacing: -0.02em;
@@ -132,11 +132,11 @@ button:hover {
   background-color: var(--secondary-brand-hover);
 }
 
-.button-secondary {
+.button-tertiary {
   background-color: var(--tertiary-brand);
   color: var(--primary-brand)
 }
 
-.button-secondary:hover {
+.button-tertiary:hover {
   background-color: var(--tertiary-brand-hover);
 }

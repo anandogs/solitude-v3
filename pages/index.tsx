@@ -29,18 +29,23 @@ export const getStaticProps: GetStaticProps = async () => {
   const homePageRes = await client.getEntry<homePage>("3ZijWO9ECH1F3T6GLU8LbI");
 
   const cardsImageText = homePageRes.fields.textImageCards;
-  const cardsImageTextButton = homePageRes.fields.textImageButtonCards;
+
+  const cardsImageTextList = homePageRes.fields.textImageButtonCards
+
+  const cardsImageTextButton = cardsImageTextList.slice(0, -1);
+  const cardsImageTextButtonContinued = cardsImageTextList[cardsImageTextList.length - 1];
   const youtubeHeroVideo = homePageRes.fields.youtubeHeroVideo;
   const heroImage = homePageRes.fields.heroImage;
   const textField = homePageRes.fields.textField;
   const saturdayFreeTour = homePageRes.fields.saturdayFreeTour;
 
-  console.log(homePageRes.fields.saturdayFreeTour);
+  console.log(cardsImageTextButton);
 
   return {
     props: {
       cardsImageText,
       cardsImageTextButton,
+      cardsImageTextButtonContinued,
       youtubeHeroVideo,
       heroImage,
       textField, 
@@ -54,10 +59,11 @@ export const getStaticProps: GetStaticProps = async () => {
 const Home: NextPage = ({
   cardsImageText,
   cardsImageTextButton,
+  cardsImageTextButtonContinued,
   youtubeHeroVideo,
   heroImage,
   textField,
-  saturnFreeTour,
+  saturdayFreeTour,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   
 
@@ -109,7 +115,14 @@ const Home: NextPage = ({
           )
         )}
       </div>
-      <SaturdayFarmTour saturdayDict={saturnFreeTour}/>
+      <SaturdayFarmTour saturdayDict={saturdayFreeTour}/>
+      <div className="grid justify-items-center">
+            <div>
+              {/* card number 2 was explicitly given here so that the image is on the left side */}
+              <CardImageTextButton cardDict={cardsImageTextButtonContinued} cardNumber={2} />
+            </div>
+        
+      </div>
     </div>
   );
 };
