@@ -8,6 +8,7 @@ import CardImageTextButton from "../components/Cards/CardImageTextButton";
 import HeroImageText from "../components/Cards/HeroImageText";
 import TextField from "../components/Cards/TextField";
 import Header from "../components/Common/Header";
+import SaturdayFarmTour from "../components/Cards/SaturdayFarmTour";
 
 export const getStaticProps: GetStaticProps = async () => {
   interface homePage {
@@ -17,6 +18,7 @@ export const getStaticProps: GetStaticProps = async () => {
     youtubeHeroVideo: {};
     heroImage: {};
     textField: {};	
+    saturdayFreeTour: {};
   }
 
   const client = createClient({
@@ -31,7 +33,9 @@ export const getStaticProps: GetStaticProps = async () => {
   const youtubeHeroVideo = homePageRes.fields.youtubeHeroVideo;
   const heroImage = homePageRes.fields.heroImage;
   const textField = homePageRes.fields.textField;
+  const saturdayFreeTour = homePageRes.fields.saturdayFreeTour;
 
+  console.log(homePageRes.fields.saturdayFreeTour);
 
   return {
     props: {
@@ -40,6 +44,7 @@ export const getStaticProps: GetStaticProps = async () => {
       youtubeHeroVideo,
       heroImage,
       textField, 
+      saturdayFreeTour,
     },
   };
 };
@@ -52,6 +57,7 @@ const Home: NextPage = ({
   youtubeHeroVideo,
   heroImage,
   textField,
+  saturnFreeTour,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   
 
@@ -61,7 +67,7 @@ const Home: NextPage = ({
       <iframe className="w-screen" height="720" src={youtubeHeroVideo.fields.youtubeLink} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
       <HeroImageText heroDict={heroImage}/>
       <TextField textFieldDict={textField}/>
-      <div className="grid grid-cols-12 gap-x-desktop m-desktop justify-items-center">
+      <div className="grid grid-cols-12 gap-x-desktop mx-desktop justify-items-center">
         {cardsImageText.map(
           (card: {
             sys: { id: Key };
@@ -79,6 +85,7 @@ const Home: NextPage = ({
           )
         )}
       </div>
+      <div className="h-[7.6875rem]"></div>
       <div className="grid justify-items-center">
         {cardsImageTextButton.map(
           (
@@ -102,6 +109,7 @@ const Home: NextPage = ({
           )
         )}
       </div>
+      <SaturdayFarmTour saturdayDict={saturnFreeTour}/>
     </div>
   );
 };
