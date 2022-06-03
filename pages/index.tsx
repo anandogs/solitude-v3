@@ -39,8 +39,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const textField = homePageRes.fields.textField;
   const saturdayFreeTour = homePageRes.fields.saturdayFreeTour;
 
-  console.log(cardsImageTextButton);
-
   return {
     props: {
       cardsImageText,
