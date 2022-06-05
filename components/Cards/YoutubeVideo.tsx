@@ -16,7 +16,7 @@ type YoutubeVideoProps = {
 const YoutubeVideo: FunctionComponent<YoutubeVideoProps> = ({ youtubeDetails }) => {
   return (
     <div>
-      <iframe src="https://www.youtube.com/embed/BBm8XjRG-II" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className='w-screen h-[800px]'></iframe>
+      <iframe src="https://www.youtube.com/embed/BBm8XjRG-II" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className='w-full h-[800px]'></iframe>
     </div>
   );
 };

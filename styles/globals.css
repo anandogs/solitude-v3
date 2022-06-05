@@ -88,7 +88,7 @@ h5 {
   color: var(--secondary-brand);
 }
 
-a {
+/* a {
   font-family: var(--font-secondary);
   font-style: normal;
   font-weight: 700;
@@ -96,7 +96,7 @@ a {
   line-height: 1.375rem;
   text-decoration-line: underline;
   color: var(--primary-brand);
-}
+} */
 
 button {
   height: 3.75rem;

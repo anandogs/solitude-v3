@@ -29,9 +29,7 @@ const TextField: FunctionComponent<textFieldProps> = ({ textFieldDict }) => {
     textFieldDict.fields.title,
     richTextTitleOptions
   );
-  console.log(richTextTitle)
   const richTextBody = documentToReactComponents(textFieldDict.fields.body);
-    console.log(richTextBody)
   return (
     <div className="w-screen px-[4.875rem] py-[3.625rem] grid gap-[1.875rem] text-center">
       <div>{richTextTitle}</div>
