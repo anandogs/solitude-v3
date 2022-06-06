@@ -86,7 +86,6 @@ const BlogPost: FunctionComponent<BlogPostTypes> = ({ blogPostProps }) => {
        }
        </div>
        </div>
-   
          {blogPost}
          </div>
          </div>

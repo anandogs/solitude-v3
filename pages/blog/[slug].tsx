@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 import { createClient } from "contentful";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { InferGetStaticPropsType } from "next";
@@ -20,7 +21,10 @@ interface blog {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const blogRes = await client.getEntries<blog>({ content_type: "blogPost" });
+  const blogRes = await client.getEntries<blog>({
+    content_type: "blogPost",
+    order: "sys.createdAt",
+  });
   const paths = blogRes.items.map((item) => ({
     params: { slug: item.fields.slug },
   }));
@@ -68,7 +72,11 @@ const Blog: NextPage = ({
       </h2>
       <BlogCardGallery postArray={otherPosts} />
       <div className="py-[5.9375rem] text-center">
-        <a>See all articles</a>
+        <Link href="/blog">
+          <a>
+            <p>See all articles</p>
+          </a>
+        </Link>
       </div>
     </div>
   );

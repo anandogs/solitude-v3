@@ -39,11 +39,10 @@ const BlogCardGallery: FunctionComponent<PostArrayProps> = ({ postArray }) => {
 };
 
 const BlogCard: FunctionComponent<BlogCardProps> = ({ postDict }) => {
-  console.log(postDict.fields.slug)
     return (
       
         <Link href={`/blog/${postDict.fields.slug}`}>
-        <a className="w-[42vw] h-[35.625rem] flex flex-col bg-tertiary-brand ">
+        <a className="w-[42vw] flex flex-col bg-tertiary-brand ">
           
         <div className="">
           <Image
@@ -56,10 +55,9 @@ const BlogCard: FunctionComponent<BlogCardProps> = ({ postDict }) => {
             className="hover:scale-[105%] ease-in duration-300 h-[100%]"
           />
         </div>
-        <div className="text-center py-[2.5625rem] flex flex-col justify-evenly px-[5.625rem] grow-0">
+        <div className="text-center py-[2.75rem] grid gap-y-[1.4375rem]">
           <div>
             <h2>{postDict.fields.postTitle}</h2>
-            {/* {post.fields.title} */}
           </div>
           <h4 className="text-primary-brand">
             {`${postDict.sys.updatedAt.slice(

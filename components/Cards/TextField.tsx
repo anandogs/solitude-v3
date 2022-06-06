@@ -22,6 +22,9 @@ const TextField: FunctionComponent<textFieldProps> = ({ textFieldDict }) => {
       [BLOCKS.HEADING_1]: (node: any, children: any) => {
         return <h1 style={{ color: titleColour }}>{children}</h1>;
       },
+      [BLOCKS.HEADING_2]: (node: any, children: any) => {
+        return <h2 style={{ color: titleColour }}>{children}</h2>;
+      },
     },
   };
 
@@ -33,7 +36,7 @@ const TextField: FunctionComponent<textFieldProps> = ({ textFieldDict }) => {
   return (
     <div className="w-screen px-[4.875rem] py-[3.625rem] grid gap-[1.875rem] text-center">
       <div>{richTextTitle}</div>
-      <div>{richTextBody}</div>
+      <div className="grid gap-y-[1.875rem]">{richTextBody}</div>
     </div>
   );
 };
