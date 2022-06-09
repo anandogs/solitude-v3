@@ -9,6 +9,7 @@ import HeroImageText from "../components/Cards/HeroImageText";
 import TextField from "../components/Cards/TextField";
 import Header from "../components/Common/Header";
 import SaturdayFarmTour from "../components/Cards/SaturdayFarmTour";
+import Footer from "./test";
 
 export const getStaticProps: GetStaticProps = async () => {
   interface homePage {
@@ -121,6 +122,7 @@ const Home: NextPage = ({
             </div>
         
       </div>
+      <Footer/>
     </div>
   );
 };

@@ -143,3 +143,14 @@ button:hover {
 .button-tertiary:hover {
   background-color: var(--tertiary-brand-hover);
 }
+
+input {
+  border: 1px;
+  border-style: solid;
+  border-color: var(--primary-brand);
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 140%;
+  padding: 0.75rem;  
+}

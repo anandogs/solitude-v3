@@ -16,6 +16,7 @@ import BlogCardGallery from "../../components/Cards/BlogCardGallery";
 import { createClient } from "contentful";
 import { BLOCKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import Footer from "../test";
 
 const BlogCardLazy = dynamic(
   () => import("../../components/Cards/BlogCardGallery")
@@ -111,6 +112,7 @@ const Blog: NextPage = ({
           <p className="py-[4.375rem] text-center">Read more</p>
         </a>
       </div>
+      <Footer/>
     </div>
   );
 };

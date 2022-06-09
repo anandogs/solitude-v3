@@ -6,6 +6,7 @@ import { InferGetStaticPropsType } from "next";
 import Header from "../../components/Common/Header";
 import BlogPost from "../../components/Cards/BlogPost";
 import BlogCardGallery from "../../components/Cards/BlogCardGallery";
+import Footer from "../test";
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE!,
@@ -78,6 +79,7 @@ const Blog: NextPage = ({
           </a>
         </Link>
       </div>
+      <Footer/>
     </div>
   );
 };
