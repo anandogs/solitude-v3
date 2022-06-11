@@ -1,20 +1,38 @@
-export default function handler(req:any, res:any) {
-    // Get data submitted in request's body.
-    const body = req.body
-  
-    // Optional logging to see the responses
-    // in the command line where next.js app is running.
-    console.log('body: ', body)
-  
-    // Guard clause checks for first and last name,
-    // and returns early if they are not found
-    if (!body.first || !body.last) {
-      // Sends a HTTP bad request error code
-      return res.status(400).json({ data: 'First or last name not found' })
+import axios from "axios";
+
+export default async function handler(req: any, res: any) {
+  const { fName, lName, email } = req.body;
+
+  const data = {
+    email_address: email,
+    status: "subscribed",
+    merge_fields: {
+      FNAME: fName,
+      LNAME: lName,
+    },
+  };
+
+
+  const url = `https://us10.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members`;
+
+  const options = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `api_key ${process.env.MAILCHIMP_KEY}`,
+    },
+  };
+
+  try {
+    const response = await axios.post(url, data, options);
+    if (response.status >= 400) {
+      return res.status(400).json({
+        error: `There was an error subscribing to the newsletter. Shoot me an email at ogbonnakell@gmail and I'll add you to the list.`,
+      });
     }
-  
-    // Found the name.
-    // Sends a HTTP success code
-    res.status(200).json({ data: `${body.first} ${body.last}` })
+    return res.status(201).json({ message: "success" });
+  } catch (error) {
+    
+    return res.status(500).json({ error: error });
   }
-  
+
+}

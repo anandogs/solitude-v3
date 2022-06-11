@@ -133,7 +133,7 @@ const Footer: FunctionComponent = () => {
             <input name='lName' required type='text' placeholder="Last name" className="placeholder:text-secondary-brand w-[60%]"/>
           </div>
           <input name='email' required type='email' placeholder="Email address" className="placeholder:text-secondary-brand"/>
-          <button type="submit" className="w-[50%]">
+          <button className="w-[50%]"  >
               Subscribe Now
           </button>
         </form>

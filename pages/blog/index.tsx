@@ -16,7 +16,7 @@ import BlogCardGallery from "../../components/Cards/BlogCardGallery";
 import { createClient } from "contentful";
 import { BLOCKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import Footer from "../test";
+import Footer from '././../../components/Common/Footer';
 
 const BlogCardLazy = dynamic(
   () => import("../../components/Cards/BlogCardGallery")
