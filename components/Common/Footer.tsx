@@ -7,9 +7,39 @@ import time from "../../public/time.png";
 import instagram from "../../public/Instagram.png";
 import facebook from "../../public/Facebook.png";
 import youtube from "../../public/YouTube.png";
+import { useState } from "react";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-// Add props
 const Footer: FunctionComponent = () => {
+  const [fName, setfName] = useState("");
+  const [lName, setlName] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setIsLoading(true);
+    await axios.post("/api/register", {
+      fName,
+      lName,
+      emailAddress,
+    }).then(res => {
+      setIsLoading(false);
+      toast.success("You have been subscribed to the newsletter!");
+      setfName("");
+      setlName("");
+      setEmailAddress("");
+    }).catch(err => {
+      setIsLoading(false);
+      if (err.response.status >= 400) {
+        toast.error(err.response.data.error);
+      }
+    }
+    );
+  };
+
   return (
     <div className="bg-primary-brand w-screen flex h-[30.625rem]">
       <div className="min-w-[67%] pl-[5rem] pt-[4rem]">
@@ -127,15 +157,61 @@ const Footer: FunctionComponent = () => {
           <h2 className="text-primary-brand">Never miss a moment with us!</h2>
           <p className="font-bold">Subscribe to our monthly newsletter.</p>
         </div>
-        <form className="grid pt-[2.875rem] gap-y-[1.5625rem]" method="POST" action="/api/register">
+        {/* method="POST" action="/api/register */}
+        <form
+          className="grid pt-[2.875rem] gap-y-[1.5625rem]"
+          onSubmit={(e) => handleSubmit(e)}
+        >
           <div className="flex gap-x-[5%]">
-            <input name='fName' required type='text' placeholder="First name" className="placeholder:text-secondary-brand w-[35%]"/>
-            <input name='lName' required type='text' placeholder="Last name" className="placeholder:text-secondary-brand w-[60%]"/>
+            <input
+            value={fName}
+              name="fName"
+              required
+              type="text"
+              placeholder="First name"
+              className="placeholder:text-secondary-brand w-[35%]"
+              onChange={(e) => setfName(e.target.value)}
+            />
+            <input
+            value={lName}
+              name="lName"
+              required
+              type="text"
+              placeholder="Last name"
+              className="placeholder:text-secondary-brand w-[60%]"
+              onChange={(e) => setlName(e.target.value)}
+            />
           </div>
-          <input name='email' required type='email' placeholder="Email address" className="placeholder:text-secondary-brand"/>
-          <button className="w-[50%]"  >
+          <input
+          value={emailAddress}
+            name="email"
+            required
+            type="email"
+            placeholder="Email address"
+            className="placeholder:text-secondary-brand"
+            onChange={(e) => setEmailAddress(e.target.value)}
+          />
+          {isLoading ? (
+            <button disabled className="w-[50%] button-secondary">
               Subscribe Now
-          </button>
+            </button>
+          ) : (
+            <button type="submit" className="w-[50%] button-primary">
+              Subscribe Now
+            </button>
+          )}
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            closeButton={false}
+          />
         </form>
       </div>
     </div>

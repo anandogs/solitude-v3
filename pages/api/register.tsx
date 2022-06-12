@@ -1,10 +1,10 @@
 import axios from "axios";
 
 export default async function handler(req: any, res: any) {
-  const { fName, lName, email } = req.body;
+  const { fName, lName, emailAddress } = req.body;
 
   const data = {
-    email_address: email,
+    email_address: emailAddress,
     status: "subscribed",
     merge_fields: {
       FNAME: fName,
@@ -25,14 +25,14 @@ export default async function handler(req: any, res: any) {
   try {
     const response = await axios.post(url, data, options);
     if (response.status >= 400) {
+      
       return res.status(400).json({
-        error: `There was an error subscribing to the newsletter. Shoot me an email at ogbonnakell@gmail and I'll add you to the list.`,
+        error: res.data.detail,
       });
     }
-    return res.status(201).json({ message: "success" });
-  } catch (error) {
-    
-    return res.status(500).json({ error: error });
+    return res.status(201).json({ message: "We have added you to our newsletter!" });
+  } catch (error:any) {
+    return res.status(500).json({ error: error.response.data.title });
   }
 
 }

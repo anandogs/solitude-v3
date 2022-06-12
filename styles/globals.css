@@ -127,6 +127,10 @@ button:hover {
   background: var(--primary-brand-hover)
 }
 
+.button-primary {
+  background-color: var(--primary-brand);
+}
+
 .button-secondary {
   background-color: var(--secondary-brand);
 }
