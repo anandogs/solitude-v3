@@ -21,23 +21,25 @@ const Footer: FunctionComponent = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setIsLoading(true);
-    await axios.post("/api/register", {
-      fName,
-      lName,
-      emailAddress,
-    }).then(res => {
-      setIsLoading(false);
-      toast.success("You have been subscribed to the newsletter!");
-      setfName("");
-      setlName("");
-      setEmailAddress("");
-    }).catch(err => {
-      setIsLoading(false);
-      if (err.response.status >= 400) {
-        toast.error(err.response.data.error);
-      }
-    }
-    );
+    await axios
+      .post("/api/register", {
+        fName,
+        lName,
+        emailAddress,
+      })
+      .then((res) => {
+        setIsLoading(false);
+        toast.success(res.data.message);
+        setfName("");
+        setlName("");
+        setEmailAddress("");
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        if (err.response.status >= 400) {
+          toast.error(err.response.data.error);
+        }
+      });
   };
 
   return (
@@ -164,7 +166,7 @@ const Footer: FunctionComponent = () => {
         >
           <div className="flex gap-x-[5%]">
             <input
-            value={fName}
+              value={fName}
               name="fName"
               required
               type="text"
@@ -173,7 +175,7 @@ const Footer: FunctionComponent = () => {
               onChange={(e) => setfName(e.target.value)}
             />
             <input
-            value={lName}
+              value={lName}
               name="lName"
               required
               type="text"
@@ -183,7 +185,7 @@ const Footer: FunctionComponent = () => {
             />
           </div>
           <input
-          value={emailAddress}
+            value={emailAddress}
             name="email"
             required
             type="email"
