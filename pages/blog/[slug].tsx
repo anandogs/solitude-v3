@@ -6,7 +6,7 @@ import { InferGetStaticPropsType } from "next";
 import Header from "../../components/Common/Header";
 import BlogPost from "../../components/Cards/BlogPost";
 import BlogCardGallery from "../../components/Cards/BlogCardGallery";
-import Footer from "../test";
+import Footer from '../../components/Common/Footer';
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE!,
