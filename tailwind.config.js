@@ -16,6 +16,7 @@ module.exports = {
         'primary-brand':'#98C93C',
         'secondary-brand':'#10110D',
         'tertiary-brand':'#F6F6F6',
+        'dark-grey':'#EAEAEA',
       },
       padding: {
         'card-image-text-horizontal':'2.3125rem',

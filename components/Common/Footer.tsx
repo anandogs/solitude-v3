@@ -1,5 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FunctionComponent } from "react";
+import logo from "../../public/logo.png";
+import down from "../../public/down.png";
 import location from "../../public/location.png";
 import email from "../../public/email.png";
 import contact from "../../public/contact.png";
@@ -43,12 +46,36 @@ const Footer: FunctionComponent = () => {
   };
 
   return (
-    <div className="bg-primary-brand w-screen flex h-[30.625rem]">
-      <div className="min-w-[67%] pl-[5rem] pt-[4rem]">
-        <div className="grid grid-cols-6 gap-x-[0.3125rem]">
+    <div className="w-screen grid grid-cols-1 lg:grid-cols-3 h-[30.625rem]">
+      <div className="col-span-2 pl-[2.3125rem] lg:pl-[5rem] pt-[1.875rem] lg:pt-[4rem] order-last lg:order-first bg-primary-brand ">
+        <div className="grid grid-cols-1 lg:grid-cols-6 gap-x-[0.3125rem] justify-items-start">
+          <div className="lg:hidden pb-3">
+            <Link href="/">
+              <Image
+                alt="Logo of Solitude Farm"
+                src={logo}
+                width="49px"
+                height="44px"
+                objectFit="contain"
+                className="cursor-pointer"
+              />
+            </Link>
+          </div>
           <div className="grid gap-y-[0.5625rem]">
-            <p className="font-bold">Home</p>
-            <div>
+            <div className="flex border-b-[1.2px] border-black items-center">
+            <p className="lg:font-bold text-[0.875rem] lg:text-[1rem]">Home</p>
+            <div className="lg:hidden flex items-center">
+            <Image
+              alt="Chevron Down"
+              src={down}
+              width="23px"
+              height="23px"
+              objectFit="contain"
+              className="cursor-pointer"
+            />
+            </div>
+            </div>
+            <div className="hidden lg:block">
               <h4>Farm</h4>
               <h4>Cafe</h4>
               <h4>Education</h4>
@@ -57,8 +84,10 @@ const Footer: FunctionComponent = () => {
             </div>
           </div>
           <div className="grid gap-y-[0.5625rem]">
-            <p className="font-bold">Our Work</p>
-            <div>
+            <p className="lg:font-bold text-[0.875rem] lg:text-[1rem]">
+              Our Work
+            </p>
+            <div className="hidden lg:block">
               <h4>Our Projects</h4>
               <h4>Music</h4>
               <h4>Testimonials</h4>
@@ -67,8 +96,10 @@ const Footer: FunctionComponent = () => {
             </div>
           </div>
           <div className="grid gap-y-[0.5625rem]">
-            <p className="font-bold">Book Now</p>
-            <div>
+            <p className="lg:font-bold text-[0.875rem] lg:text-[1rem]">
+              Book Now
+            </p>
+            <div className="hidden lg:block">
               <h4>Workshops</h4>
               <h4>Lunch Scheme</h4>
               <h4>Basket Service</h4>
@@ -76,9 +107,13 @@ const Footer: FunctionComponent = () => {
               <h4>Book a meal</h4>
             </div>
           </div>
-          <div className="col-span-3 grid gap-y-[0.5625rem] content-start">
-            <p className="font-bold">Contact Us</p>
-            <div>
+          <div className="lg:col-span-3 grid gap-y-[0.5625rem] content-start">
+            <div className="flex">
+              <p className="lg:font-bold text-[0.875rem] lg:text-[1rem]">
+                Contact Us
+              </p>
+            </div>
+            <div className="hidden lg:block">
               <div className="flex gap-x-[0.5625rem]">
                 <Image
                   alt="GPS Pin"
@@ -154,7 +189,7 @@ const Footer: FunctionComponent = () => {
           </div>
         </div>
       </div>
-      <div className="bg-tertiary-brand w-[33%] px-[2.75rem]">
+      <div className="bg-tertiary-brand px-[2.75rem]">
         <div className="pt-[2.8125rem]">
           <h2 className="text-primary-brand">Never miss a moment with us!</h2>
           <p className="font-bold">Subscribe to our monthly newsletter.</p>
