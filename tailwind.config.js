@@ -4,6 +4,18 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontSize: {
+      'h2': ['2.5rem', {
+        lineHeight: '3.375rem',
+        letterSpacing: '-0.02em',
+      }],
+      'h3': ['1.5rem', {
+        lineHeight: '2.0625rem',
+        letterSpacing: '-0.02em',
+      }],
+      // Or with a default line-height as well
+      
+    },
     extend: {
       height: {
         'card-image-text': '50rem',

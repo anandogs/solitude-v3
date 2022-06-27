@@ -28,7 +28,7 @@ type PostArrayProps = {
 
 const BlogCardGallery: FunctionComponent<PostArrayProps> = ({ postArray }) => {
   return (
-    <div className="grid grid-cols-2 gap-y-[7.6875rem] justify-items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-[7.6875rem] justify-items-center">
       {postArray.map((post: any, index: any) => (
         <div key={index}>
           <BlogCard postDict={post} />
@@ -42,15 +42,13 @@ const BlogCard: FunctionComponent<BlogCardProps> = ({ postDict }) => {
     return (
       
         <Link href={`/blog/${postDict.fields.slug}`}>
-        <a className="w-[42vw] flex flex-col bg-tertiary-brand ">
+        <a className="w-[550px] max-w-[100vw]flex flex-col bg-tertiary-brand ">
           
-        <div className="">
+        <div className="relative w-[550px] max-w-[100vw] h-[460px]">
           <Image
             alt={postDict.fields.cardImage.fields.description}
             src={`https:${postDict.fields.cardImage.fields.file.url}`}
-            width="550px"
-            height="460px"
-            layout="responsive"
+            layout="fill"
             objectFit="cover"
             className="hover:scale-[105%] ease-in duration-300 h-[100%]"
           />
