@@ -60,7 +60,7 @@ const ImageCard: FunctionComponent<latestPostType> = ({ latestPostDict }) => {
             objectFit="cover"
           />
         </div>
-        <div className="bg-secondary-brand flex-1 py-[7.625rem] px-[5.6875rem] grid">
+        <div className="bg-secondary-brand flex-1 py-[34px] lg:py-[7.625rem] px-[25px] lg:px-[5.6875rem] gap-[34px] grid">
           <h5 className="text-primary-brand uppercase text-center">
             Featured Today
           </h5>

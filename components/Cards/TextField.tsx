@@ -34,9 +34,11 @@ const TextField: FunctionComponent<textFieldProps> = ({ textFieldDict }) => {
   );
   const richTextBody = documentToReactComponents(textFieldDict.fields.body);
   return (
-    <div className="w-screen px-[4.875rem] py-[3.625rem] grid gap-[1.875rem] text-center">
+    <div className="flex justify-center px-[22px] lg:px-0">
+    <div className="w-screen max-w-[1132px] py-[3.625rem] grid gap-[1.875rem] text-center">
       <div>{richTextTitle}</div>
       <div className="grid gap-y-[1.875rem]">{richTextBody}</div>
+    </div>
     </div>
   );
 };
