@@ -3,10 +3,10 @@ import Link from "next/link";
 import { createClient } from "contentful";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { InferGetStaticPropsType } from "next";
-import Header from "../../components/Common/Header";
-import BlogPost from "../../components/Cards/BlogPost";
-import BlogCardGallery from "../../components/Cards/BlogCardGallery";
-import Footer from '../../components/Common/Footer';
+import Header from "../components/Common/Header";
+import BlogPost from "../components/Cards/BlogPost";
+import BlogCardGallery from "../components/Cards/BlogCardGallery";
+import Footer from '../components/Common/Footer';
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE!,

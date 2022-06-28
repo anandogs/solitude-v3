@@ -1,130 +1,100 @@
 import type { NextPage } from "next";
-import { createClient } from "contentful";
 import { GetStaticProps } from "next";
 import { InferGetStaticPropsType } from "next";
-import { Key } from "react";
-import CardImageText from "../components/Cards/CardImageText";
-import CardImageTextButton from "../components/Cards/CardImageTextButton";
-import HeroImageText from "../components/Cards/HeroImageText";
-import TextField from "../components/Cards/TextField";
+
+import dynamic from "next/dynamic";
+import { useState } from "react";
+
 import Header from "../components/Common/Header";
-import SaturdayFarmTour from "../components/Cards/SaturdayFarmTour";
+import TextField from "../components/Cards/TextField";
+import BlogCardGallery from "../components/Cards/BlogCardGallery";
+import ImageCard from "../components/Cards/ImageCard";
+
+import { createClient } from "contentful";
 import Footer from '../components/Common/Footer';
 
-export const getStaticProps: GetStaticProps = async () => {
-  interface homePage {
-    title: string;
-    textImageCards: [];
-    textImageButtonCards: [];
-    youtubeHeroVideo: {};
-    heroImage: {};
-    textField: {};	
-    saturdayFreeTour: {};
-  }
+const BlogCardLazy = dynamic(
+  () => import("../components/Cards/BlogCardGallery")
+);
 
-  const client = createClient({
-    space: process.env.CONTENTFUL_SPACE!,
-    accessToken: process.env.CONTENTFUL_KEY!,
+const client = createClient({
+  space: process.env.CONTENTFUL_SPACE!,
+  accessToken: process.env.CONTENTFUL_KEY!,
+});
+
+
+export const getStaticProps: GetStaticProps = async () => {
+  type blogPage = {
+    title: string;
+    pageHeading: {};
+  };
+
+  type blogEntries = {
+    fields: {
+      title: {};
+    };
+  };
+
+  const blogPageRes = await client.getEntry<blogPage>("1HVRPX1Qpxag9PnIIeLMin");
+  // the - in front of the sys.createdAt is a hack to get the latest post
+  const blogEntriesRes = await client.getEntries<blogEntries>({
+    content_type: "blogPost",
+    order: "-sys.createdAt",
   });
 
-  const homePageRes = await client.getEntry<homePage>("3ZijWO9ECH1F3T6GLU8LbI");
+  const blogEntriesList = blogEntriesRes.items;
 
-  const cardsImageText = homePageRes.fields.textImageCards;
+  const latestPost = blogEntriesList[0];
+  const firstNPosts = blogEntriesList.slice(1, 3);
+  const balancePosts = blogEntriesList.slice(3);
 
-  const cardsImageTextList = homePageRes.fields.textImageButtonCards
-
-  const cardsImageTextButton = cardsImageTextList.slice(0, -1);
-  const cardsImageTextButtonContinued = cardsImageTextList[cardsImageTextList.length - 1];
-  const youtubeHeroVideo = homePageRes.fields.youtubeHeroVideo;
-  const heroImage = homePageRes.fields.heroImage;
-  const textField = homePageRes.fields.textField;
-  const saturdayFreeTour = homePageRes.fields.saturdayFreeTour;
+  const cardsText = blogPageRes.fields.pageHeading;
 
   return {
     props: {
-      cardsImageText,
-      cardsImageTextButton,
-      cardsImageTextButtonContinued,
-      youtubeHeroVideo,
-      heroImage,
-      textField, 
-      saturdayFreeTour,
+      cardsText,
+      latestPost,
+      firstNPosts,
+      balancePosts,
     },
   };
 };
 
-
 // 24-05-2022:2 infer get static props
-const Home: NextPage = ({
-  cardsImageText,
-  cardsImageTextButton,
-  cardsImageTextButtonContinued,
-  youtubeHeroVideo,
-  heroImage,
-  textField,
-  saturdayFreeTour,
+const Blog: NextPage = ({
+  cardsText,
+  latestPost,
+  firstNPosts,
+  balancePosts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  
+  const [showAll, setShowAll] = useState(false);
 
   return (
     <div>
-      <Header/>
-      <iframe className="w-screen" height="720" src={youtubeHeroVideo.fields.youtubeLink} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-      <HeroImageText heroDict={heroImage}/>
-      <TextField textFieldDict={textField}/>
-      <div className="grid grid-cols-12 gap-x-desktop mx-desktop justify-items-center">
-        {cardsImageText.map(
-          (card: {
-            sys: { id: Key };
-            fields: {
-              title: string;
-              body: string;
-              cardImage: {
-                fields: { description: string; file: { url: string } };
-              };
-            };
-          }) => (
-            <div className="col-span-6" key={card.sys.id}>
-              <CardImageText cardDict={card} />
-            </div>
-          )
+      <Header />
+      <TextField textFieldDict={cardsText} />
+      <ImageCard latestPostDict={latestPost} />
+      <h1 className="py-[8.3125rem] text-primary-brand text-center">
+        All articles
+      </h1>
+      <div>
+        <BlogCardGallery postArray={firstNPosts} />
+        {showAll && (
+          <div className="py-[7.6875rem]">
+            <BlogCardLazy postArray={balancePosts} />
+          </div>
         )}
-      </div>
-      <div className="h-[7.6875rem]"></div>
-      <div className="grid justify-items-center">
-        {cardsImageTextButton.map(
-          (
-            card: {
-              sys: { id: Key };
-              fields: {
-                title: string;
-                body: string;
-                subheading: string;
-                button: string;
-                image: {
-                  fields: { description: string; file: { url: string } };
-                };
-              };
-            },
-            index: number
-          ) => (
-            <div key={card.sys.id}>
-              <CardImageTextButton cardDict={card} cardNumber={index} />
-            </div>
-          )
-        )}
-      </div>
-      <SaturdayFarmTour saturdayDict={saturdayFreeTour}/>
-      <div className="grid justify-items-center">
-            <div>
-              {/* card number 2 was explicitly given here so that the image is on the left side */}
-              <CardImageTextButton cardDict={cardsImageTextButtonContinued} cardNumber={2} />
-            </div>
-        
+        <a
+          onClick={() => setShowAll(true)}
+          className={showAll ? "hidden" : "block"}
+        >
+          <p className="py-[4.375rem] text-center">Read more</p>
+        </a>
       </div>
       <Footer/>
     </div>
   );
 };
 
-export default Home;
+export default Blog;
+
