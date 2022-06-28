@@ -28,7 +28,7 @@ const HeroImageText: FunctionComponent<HeroImageProps> = ({ heroDict }) => {
         height='720px' 
         layout="responsive" 
         objectFit="fill" />
-        <div className='w-screen top-[0px] absolute top-1/2 translate-y-[-50%] text-center '>
+        <div className='w-screen top-[0px] absolute translate-y-[-50%] text-center '>
       <h2 className='text-white px-[12.5rem] '>
         {heroDict.fields.textOverlay}
       </h2>

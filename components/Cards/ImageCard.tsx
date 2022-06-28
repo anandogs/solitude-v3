@@ -66,7 +66,7 @@ const ImageCard: FunctionComponent<latestPostType> = ({ latestPostDict }) => {
           </h5>
           {richTextTitle}
           {richTextSubtitle}
-          <Link href={`/blog/${latestPostDict.fields.slug}`}>
+          <Link href={`/${latestPostDict.fields.slug}`}>
             <a className="text-center">
               <p>Read more</p>
             </a>

@@ -41,7 +41,7 @@ const BlogCardGallery: FunctionComponent<PostArrayProps> = ({ postArray }) => {
 const BlogCard: FunctionComponent<BlogCardProps> = ({ postDict }) => {
     return (
       
-        <Link href={`/blog/${postDict.fields.slug}`}>
+        <Link href={`/${postDict.fields.slug}`}>
         <a className="w-[550px] max-w-[100vw]flex flex-col bg-tertiary-brand ">
           
         <div className="relative w-[550px] max-w-[100vw] h-[460px]">
