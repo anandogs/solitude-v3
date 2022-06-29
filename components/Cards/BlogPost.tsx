@@ -33,7 +33,7 @@ const BlogPost: FunctionComponent<BlogPostTypes> = ({ blogPostProps }) => {
         renderNode: {
           [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
             return (
-              <div>
+              <div className=''>
                 <Image
                   alt={node.data.target.fields.description}
                   src={`https:${node.data.target.fields.file.url}`}
@@ -48,7 +48,7 @@ const BlogPost: FunctionComponent<BlogPostTypes> = ({ blogPostProps }) => {
           [BLOCKS.EMBEDDED_ENTRY]: (node: any) => {
             if (node.data.target.sys.contentType.sys.id === "twoImages") {
               return (
-                <div className="grid grid-cols-2 gap-x-[2.375rem] h-[38.75rem]">
+                <div className="grid grid-cols-1 gap-y-[26px] lg:grid-cols-2 lg:gap-x-[2.375rem] lg:h-[38.75rem] lg:pt-[38px]">
                   <Image
                     alt={node.data.target.fields.image1.fields.description}
                     src={`https:${node.data.target.fields.image1.fields.file.url}`}
@@ -77,7 +77,7 @@ const BlogPost: FunctionComponent<BlogPostTypes> = ({ blogPostProps }) => {
     return (
         <div className="bg-tertiary-brand">
         <TextField textFieldDict={blogTitle}/>
-        <div className="px-[4.5rem] grid gap-y-[1.875rem]">
+        <div className="lg:px-[4.5rem] grid">
         <div className="flex justify-center">
         <div className="w-full">
         {youTubeLink ? 
@@ -86,7 +86,9 @@ const BlogPost: FunctionComponent<BlogPostTypes> = ({ blogPostProps }) => {
        }
        </div>
        </div>
+       <div className="blog-post">
          {blogPost}
+         </div>
          </div>
          </div>
 

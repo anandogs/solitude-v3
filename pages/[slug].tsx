@@ -73,7 +73,7 @@ const Blog: NextPage = ({
       </h2>
       <BlogCardGallery postArray={otherPosts} />
       <div className="py-[5.9375rem] text-center">
-        <Link href="/blog">
+        <Link href="/">
           <a>
             <p>See all articles</p>
           </a>

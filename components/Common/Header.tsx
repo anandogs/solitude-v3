@@ -13,7 +13,7 @@ const Header: FunctionComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <div className="bg-primary-brand w-screen h-[4.4375rem] flex items-center justify-between px-[1.5625rem] lg:px-[5.375rem]">
+      <div className="bg-primary-brand w-[100%] h-[4.4375rem] flex items-center justify-between px-[1.5625rem] lg:px-[5.375rem]">
           <Link href='https://solitude.farm/'>
           <Image
         alt='Logo of Solitude Farm'

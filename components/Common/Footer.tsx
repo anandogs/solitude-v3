@@ -52,7 +52,7 @@ const Footer: FunctionComponent = () => {
   };
 
   return (
-    <div className="w-screen grid grid-cols-1 lg:grid-cols-3 h-[30.625rem]">
+    <div className="w-[100%] grid grid-cols-1 lg:grid-cols-3 h-[30.625rem]">
       <div className="col-span-2 pl-[2.3125rem] lg:pl-[5rem] pt-[1.875rem] lg:pt-[4rem] order-last lg:order-first bg-primary-brand ">
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-x-[0.3125rem] justify-items-start">
           <div className="lg:hidden pb-3">

@@ -42,9 +42,9 @@ const BlogCard: FunctionComponent<BlogCardProps> = ({ postDict }) => {
     return (
       
         <Link href={`/${postDict.fields.slug}`}>
-        <a className="w-[550px] max-w-[100vw]flex flex-col bg-tertiary-brand ">
+        <a className="lg:w-[43vw] w-[311px] flex flex-col bg-tertiary-brand ">
           
-        <div className="relative w-[550px] max-w-[100vw] h-[460px]">
+        <div className="relative lg:w-[43vw] w-[311px] h-[460px]">
           <Image
             alt={postDict.fields.cardImage.fields.description}
             src={`https:${postDict.fields.cardImage.fields.file.url}`}

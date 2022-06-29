@@ -52,20 +52,6 @@ h2 {
   color: var(--secondary-brand);
 }
 
-
-@media (max-width: 1279px) { 
-  h1 {
-    font-size: 2.5rem;
-  line-height: 3.375rem;
-  }
-  h2 {
-  font-size: 1.5rem;
-  line-height: 2.0625rem;
- }
-}
-
-
-
 h3 {
   font-family: var(--font-secondary);
   font-weight: 400;
@@ -81,6 +67,7 @@ p {
   font-size: 1rem;
   line-height: 140%;
   color: var(--secondary-brand);
+  
 }
 
 h4 {
@@ -128,28 +115,15 @@ button {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 144px;
+  height: 60px;
+  font-size: 14px;
+  line-height: 19px;
+  border-radius: 0.9375rem;
 
 }
 
-@media (max-width: 1280px) {
-button {
-  width: 134px;
-  height: 46px;
-  font-size: 10px;
-  line-height: 13.62px;
-  border-radius: 0.625rem;
-}
-}
 
-@media (min-width: 1280px) {
-  button { 
-    width: 144px;
-    height: 60px;
-    font-size: 14px;
-    line-height: 19px;
-    border-radius: 0.9375rem;
-  }
-  }
 button:hover {
   background: var(--primary-brand-hover)
 }
@@ -184,4 +158,50 @@ input {
   font-size: 0.875rem;
   line-height: 140%;
   padding: 0.75rem;  
+}
+
+
+.blog-post > p {
+  padding-bottom: 30px;
+
+}
+
+.blog-post > h3 {
+  font-weight: 700;
+  padding-top: 38px;
+  padding-bottom: 38px;
+
+}
+
+@media (max-width: 1279px) { 
+  h1 {
+    font-size: 2.5rem;
+  line-height: 3.375rem;
+  }
+  h2 {
+  font-size: 1.5rem;
+  line-height: 2.0625rem;
+ }
+ button {
+  width: 134px;
+  height: 46px;
+  font-size: 10px;
+  line-height: 13.62px;
+  border-radius: 0.625rem;
+}
+.blog-post > p,h3 {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+.blog-post > p {
+  padding-bottom: 20px;
+
+}
+
+.blog-post > h3 {
+  padding-top: 26px;
+  padding-bottom: 26px;
+
+}
+
 }
