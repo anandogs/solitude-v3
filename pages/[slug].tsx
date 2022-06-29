@@ -57,6 +57,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       latestPost,
       otherPosts,
     },
+    revalidate: 1
   };
 };
 
