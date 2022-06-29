@@ -7,6 +7,7 @@ import Header from "../components/Common/Header";
 import BlogPost from "../components/Cards/BlogPost";
 import BlogCardGallery from "../components/Cards/BlogCardGallery";
 import Footer from '../components/Common/Footer';
+import Skeleton from '../components/Cards/Skeleton';
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE!,
@@ -29,9 +30,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = blogRes.items.map((item) => ({
     params: { slug: item.fields.slug },
   }));
+
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
@@ -43,7 +45,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     content_type: "blogPost",
     "fields.slug": params!.slug,
   });
-  const latestPost = blogRes.items[0];
+
+  
+  const latestPost = blogRes.items[0] || null;
   const allBlogs = allBlogsRes.items;
 
   let otherPosts = allBlogs.filter(function (item) {
@@ -51,6 +55,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   });
 
   otherPosts = otherPosts.slice(0, 2);
+
+  if (!blogRes.items[0]){
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+    
+  }
+
 
   return {
     props: {
@@ -65,6 +80,7 @@ const Blog: NextPage = ({
   latestPost,
   otherPosts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  if (!latestPost) return <Skeleton/>
   return (
     <div>
       <Header />
