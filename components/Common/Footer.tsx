@@ -1,21 +1,20 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import { FunctionComponent } from "react";
-import logo from "../../public/logo.png";
-import location from "../../public/location.png";
-import email from "../../public/email.png";
-import contact from "../../public/contact.png";
-import time from "../../public/time.png";
-import instagram from "../../public/Instagram.png";
-import facebook from "../../public/Facebook.png";
-import youtube from "../../public/YouTube.png";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
-import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { FunctionComponent, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import contact from "../../public/contact.png";
+import email from "../../public/email.png";
+import facebook from "../../public/Facebook.png";
+import instagram from "../../public/Instagram.png";
+import location from "../../public/location.png";
+import logo from "../../public/logo.png";
+import time from "../../public/time.png";
+import youtube from "../../public/YouTube.png";
 
 const Footer: FunctionComponent = () => {
   const [fName, setfName] = useState("");
@@ -80,11 +79,11 @@ const Footer: FunctionComponent = () => {
               />
             </div>
             <div className={`lg:block pb-2 lg:pb-0 ${homeIsOpen ? 'block': 'hidden'}`}>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">Farm</h4>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">Cafe</h4>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">Education</h4>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">365 Days</h4>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">Music</h4>
+              <Link href='https://solitude.farm/about-us-v1/'><h4 className="cursor-pointer text-[0.75rem] lg:text-[0.875rem]">Farm</h4></Link>
+              <Link href='https://solitude.farm/product-category/cafe-menu/'><h4 className="cursor-pointer text-[0.75rem] lg:text-[0.875rem]">Cafe</h4></Link>
+              <Link href='https://solitude.farm/product/3-day-intensive-permaculture-workshop/'><h4 className="cursor-pointer text-[0.75rem] lg:text-[0.875rem]">Education</h4></Link>
+              <Link href='/'><h4 className="cursor-pointer text-[0.75rem] lg:text-[0.875rem]">365 Days</h4></Link>
+              <Link href='https://open.spotify.com/artist/0aAx4OnUwPhnbvsSu9O6Up'><h4 className="cursor-pointer text-[0.75rem] lg:text-[0.875rem]">Music</h4></Link>
             </div>
           </div>
           <div className="grid gap-y-[0.5625rem]">
@@ -99,11 +98,11 @@ const Footer: FunctionComponent = () => {
               />
             </div>
             <div className={`lg:block pb-2 lg:pb-0 ${workIsOpen ? 'block': 'hidden'}`}>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">Our Projects</h4>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">Music</h4>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">Testimonials</h4>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">Image Gallery</h4>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">Donate Now</h4>
+              <Link href='https://solitude.farm/about-us-v1/'><h4 className="cursor-pointer text-[0.75rem] lg:text-[0.875rem]">Our Projects</h4></Link>
+              <Link href='https://open.spotify.com/artist/0aAx4OnUwPhnbvsSu9O6Up'><h4 className="cursor-pointer text-[0.75rem] lg:text-[0.875rem]">Music</h4></Link>
+              <Link href='https://solitude.farm/about-us-v1/'><h4 className="cursor-pointer text-[0.75rem] lg:text-[0.875rem]">Testimonials</h4></Link>
+              <Link href='https://www.facebook.com/solitudefarm/photos/?ref=page_internal'><h4 className="cursor-pointer text-[0.75rem] lg:text-[0.875rem]">Image Gallery</h4></Link>
+              <Link href='mailto:solitudepermaculture@gmail.com?subject=Id Like to Donate'><h4 className="cursor-pointer text-[0.75rem] lg:text-[0.875rem]">Donate Now</h4></Link>
             </div>
           </div>
           <div className="grid gap-y-[0.5625rem]">
@@ -119,11 +118,11 @@ const Footer: FunctionComponent = () => {
             </div>
 
             <div className={`lg:block pb-2 lg:pb-0 ${bookIsOpen ? 'block': 'hidden'}`}>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">Workshops</h4>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">Lunch Scheme</h4>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">Basket Service</h4>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">Book an event</h4>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">Book a meal</h4>
+              <Link href='https://solitude.farm/shop/'><h4 className="cursor-pointer text-[0.75rem] lg:text-[0.875rem]">Workshops</h4></Link>
+              <Link href='https://solitude.farm/shop/'><h4 className="cursor-pointer text-[0.75rem] lg:text-[0.875rem]">Lunch Scheme</h4></Link>
+              <Link href='https://solitude.farm/product/fresh-produce-package/'><h4 className="cursor-pointer text-[0.75rem] lg:text-[0.875rem]">Basket Service</h4></Link>
+              <Link href='mailto:solitudepermaculture@gmail.com?subject=Id Like to Book an Event'><h4 className="cursor-pointer text-[0.75rem] lg:text-[0.875rem]">Book an event</h4></Link>
+              <Link href='https://solitude.farm/product/solitude-meal/'><h4 className="cursor-pointer text-[0.75rem] lg:text-[0.875rem]">Book a meal</h4></Link>
             </div>
           </div>
           <div className="lg:col-span-3 grid gap-y-[0.5625rem] content-start">
@@ -148,7 +147,7 @@ const Footer: FunctionComponent = () => {
                   height="12px"
                   objectFit="contain"
                 />
-                <h4 className="text-[0.75rem] lg:text-[0.875rem]">Solitude Farm, Auroville, Tamil Nadu - 605101</h4>
+                <Link href='https://g.page/solitudefarm?share'><h4 className="cursor-pointer text-[0.75rem] lg:text-[0.875rem]">Solitude Farm, Auroville, Tamil Nadu - 605101</h4></Link>
               </div>
               <div className="flex gap-x-[0.5625rem]">
                 <Image
@@ -168,7 +167,7 @@ const Footer: FunctionComponent = () => {
                   height="12px"
                   objectFit="contain"
                 />
-                <h4 className="text-[0.75rem] lg:text-[0.875rem]">solitudepermaculture@gmail.com</h4>
+                <Link href='mailto:solitudepermaculture@gmail.com'><h4 className="text-[0.75rem] lg:text-[0.875rem]">solitudepermaculture@gmail.com</h4></Link>
               </div>
               <div className="flex gap-x-[0.5625rem]">
                 <Image
@@ -178,7 +177,7 @@ const Footer: FunctionComponent = () => {
                   height="12px"
                   objectFit="contain"
                 />
-                <h4 className="text-[0.75rem] lg:text-[0.875rem]">9843319260</h4>
+                <Link href='tel:9843319260'><h4 className="text-[0.75rem] lg:text-[0.875rem]">9843319260</h4></Link>
               </div>
             </div>
 
@@ -196,9 +195,9 @@ const Footer: FunctionComponent = () => {
             </div>
 
             <div className={`lg:block pb-2 lg:pb-0 ${followIsOpen ? 'block': 'hidden'}`}>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">Instagram</h4>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">Facebook</h4>
-              <h4 className="text-[0.75rem] lg:text-[0.875rem]">YouTube</h4>
+              <Link href='https://www.instagram.com/solitudefarm/'><h4 className="text-[0.75rem] lg:text-[0.875rem]">Instagram</h4></Link>
+              <Link href='https://www.facebook.com/solitudefarm/'><h4 className="text-[0.75rem] lg:text-[0.875rem]">Facebook</h4></Link>
+              <Link href='https://www.youtube.com/c/KrishnaMckenzie'><h4 className="text-[0.75rem] lg:text-[0.875rem]">YouTube</h4></Link>
             </div>
           </div>
         </div>
@@ -208,27 +207,27 @@ const Footer: FunctionComponent = () => {
             <p className="text-[0.875rem] lg:text-[1rem] pt-[7rem] lg:pt-0 pb-[0.625rem]">© Copyright - Solitude Farm, Auroville</p>
             <div className="hidden lg:flex items-end gap-x-[0.5625rem]">
               <h4>Follow Us:</h4>
-              <Image
+              <Link href='https://www.instagram.com/solitudefarm/'><Image
                 alt="Instagram Icon"
                 src={instagram}
                 width="39.65px"
                 height="35px"
                 objectFit="contain"
-              />
-              <Image
+              /></Link>
+              <Link href='https://www.facebook.com/solitudefarm/'><Image
                 alt="Instagram Icon"
                 src={facebook}
                 width="35.84"
                 height="35px"
                 objectFit="contain"
-              />
-              <Image
+              /></Link>
+              <Link href='https://www.youtube.com/c/KrishnaMckenzie'><Image
                 alt="Instagram Icon"
                 src={youtube}
                 width="39.65px"
                 height="35px"
                 objectFit="contain"
-              />
+              /></Link>
             </div>
           </div>
         </div>

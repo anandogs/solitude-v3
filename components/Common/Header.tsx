@@ -14,7 +14,7 @@ const Header: FunctionComponent = () => {
   return (
     <div>
       <div className="bg-primary-brand w-screen h-[4.4375rem] flex items-center justify-between px-[1.5625rem] lg:px-[5.375rem]">
-          <Link href='/'>
+          <Link href='https://solitude.farm/'>
           <Image
         alt='Logo of Solitude Farm'
         src={logo}
@@ -34,25 +34,27 @@ const Header: FunctionComponent = () => {
         className="cursor-pointer"
       />
       </div>
-          <div className='hidden uppercase lg:flex gap-[3.25rem] text-white'>
-              <h4 className='text-white'>Farm</h4>
-              <h4 className='text-white'>Cafe</h4>
-              <h4 className='text-white'>Education</h4>
-              <h4 className='text-white'>Music</h4>
-              <Link href='/blog'>
+          <div className='hidden uppercase lg:flex gap-[3.25rem] text-white cursor-pointer'>
+              <Link href='https://solitude.farm/about-us-v1/'><h4 className='text-white cursor-pointer'>Farm</h4></Link>
+              <Link href='https://solitude.farm/product-category/cafe-menu/'><h4 className='text-white cursor-pointer'>Cafe</h4></Link>
+              <Link href='https://solitude.farm/product/3-day-intensive-permaculture-workshop/'><h4 className='text-white cursor-pointer'>Education</h4></Link>
+              <Link href='https://open.spotify.com/artist/0aAx4OnUwPhnbvsSu9O6Up'><h4 className='text-white cursor-pointer'>Music</h4></Link>
+              <Link href='/'>
               <h4 className='text-white cursor-pointer'>365 Days</h4>
               </Link>
+              <Link href='mailto:solitudepermaculture@gmail.com'>
               <h4 className='text-white'>Contact</h4>
+              </Link>
           </div>
       </div>
       {isOpen ? 
       <div className="lg:hidden">
-      <h3 className="px-[1.5rem] py-[1.1875rem] border-b-[1.5px] border-dark-grey">Farm</h3>
-      <h3 className="px-[1.5rem] py-[1.1875rem] border-b-[1.5px] border-dark-grey">Cafe</h3>
-      <h3 className="px-[1.5rem] py-[1.1875rem] border-b-[1.5px] border-dark-grey">Education</h3>
-      <h3 className="px-[1.5rem] py-[1.1875rem] border-b-[1.5px] border-dark-grey">Music</h3>
-      <h3 className="px-[1.5rem] py-[1.1875rem] border-b-[1.5px] border-dark-grey">365 Days</h3>
-      <h3 className="px-[1.5rem] py-[1.1875rem] border-b-[1.5px] border-dark-grey">Contact Us</h3>
+      <Link href='https://solitude.farm/about-us-v1/'><h3 className="px-[1.5rem] py-[1.1875rem] border-b-[1.5px] border-dark-grey cursor-pointer">Farm</h3></Link>
+      <Link href='https://solitude.farm/product-category/cafe-menu/'><h3 className="px-[1.5rem] py-[1.1875rem] border-b-[1.5px] border-dark-grey cursor-pointer">Cafe</h3></Link>
+      <Link href='https://solitude.farm/product/3-day-intensive-permaculture-workshop/'><h3 className="px-[1.5rem] py-[1.1875rem] border-b-[1.5px] border-dark-grey cursor-pointer">Education</h3></Link>
+      <Link href='https://open.spotify.com/artist/0aAx4OnUwPhnbvsSu9O6Up'><h3 className="px-[1.5rem] py-[1.1875rem] border-b-[1.5px] border-dark-grey cursor-pointer">Music</h3></Link>
+      <Link href='/'><h3 className="px-[1.5rem] py-[1.1875rem] border-b-[1.5px] border-dark-grey cursor-pointer">365 Days</h3></Link>
+      <Link href='mailto:solitudepermaculture@gmail.com'><h3 className="px-[1.5rem] py-[1.1875rem] border-b-[1.5px] border-dark-grey cursor-pointer">Contact Us</h3></Link>
       </div>  
     :
     null
