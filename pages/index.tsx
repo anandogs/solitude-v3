@@ -35,7 +35,7 @@ export const getStaticProps: GetStaticProps = async () => {
     };
   };
 
-  const blogPageRes = await client.getEntry<blogPage>("1HVRPX1Qpxag9PnIIeLMin");
+  const blogPageRes = await client.getEntry<blogPage>("2VGMHZHhJ5bVT6D1Qe3m5x");
   // the - in front of the sys.createdAt is a hack to get the latest post
   const blogEntriesRes = await client.getEntries<blogEntries>({
     content_type: "blogPost",
