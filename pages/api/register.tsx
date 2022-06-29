@@ -13,7 +13,7 @@ export default async function handler(req: any, res: any) {
   };
 
 
-  const url = `https://us10.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members`;
+  const url = `https://us2.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members`;
 
   const options = {
     headers: {
