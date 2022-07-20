@@ -27,7 +27,7 @@ const BlogPost: FunctionComponent<BlogPostTypes> = ({ blogPostProps }) => {
     const blogTitle = blogPostProps.fields.title
     const blogContent = blogPostProps.fields.post
     const youTubeLink = blogPostProps.fields.youTubeVideoLink;
-  
+
 
     const inlineOptions = {
         renderNode: {
@@ -73,7 +73,6 @@ const BlogPost: FunctionComponent<BlogPostTypes> = ({ blogPostProps }) => {
       };
     
       const blogPost = documentToReactComponents(blogContent, inlineOptions);
-  
     return (
         <div className="bg-tertiary-brand">
         <TextField textFieldDict={blogTitle}/>
